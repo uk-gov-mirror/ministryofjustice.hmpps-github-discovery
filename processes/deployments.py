@@ -270,9 +270,7 @@ def check_gh_rate(gh: GithubSession) -> None:
     time_delta = cur_rate_limit.reset - datetime.now(timezone.utc)
     time_to_reset = int(time_delta.total_seconds())
     sleep_seconds = max(time_to_reset + 10, 1)
-    log_info(
-      f'Backing off for {sleep_seconds} seconds to avoid GitHub API limits.'
-    )
+    log_info(f'Backing off for {sleep_seconds} seconds to avoid GitHub API limits.')
     sleep(sleep_seconds)
     log_debug('Reauthenticating')
     gh.auth()
@@ -803,6 +801,7 @@ def collect_deployments(
   for the chosen window."""
   deployments: dict = {}
   failed_components: dict[str, str] = {}
+  # only bother with components that aren't archived
   components = sc.get_all_records(f'{sc.components_get}&filters[archived][$eq]=false')
 
   summary = {
