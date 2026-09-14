@@ -803,7 +803,7 @@ def collect_deployments(
   for the chosen window."""
   deployments: dict = {}
   failed_components: dict[str, str] = {}
-  components = sc.get_all_records(sc.components_get)
+  components = sc.get_all_records(f'{sc.components_get}&filters[archived][$eq]=false')
 
   summary = {
     'total_components': len(components),
