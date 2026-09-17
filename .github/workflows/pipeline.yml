@@ -71,6 +71,7 @@ jobs:
       additional_docker_tag: ${{ inputs.additional_docker_tag }}
       push: ${{ inputs.push || true }}
       docker_multiplatform: false
+      generate_sbom: true
 # Can't pass in environment variables to a reusabble workflow
 # https://github.com/orgs/community/discussions/26671
 # so using individual repo variables
