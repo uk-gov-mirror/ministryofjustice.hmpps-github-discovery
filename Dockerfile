@@ -1,5 +1,7 @@
 FROM ghcr.io/ministryofjustice/hmpps-python:python3.13-alpine AS base
 
+WORKDIR /app
+
 # dependencies
 COPY includes includes
 COPY processes processes
