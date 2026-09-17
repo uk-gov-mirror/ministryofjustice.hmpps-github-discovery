@@ -20,6 +20,7 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -77,7 +78,7 @@ jobs:
     name: Deploy to the development environment
     needs:
       - build
-    uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@v2 # WORKFLOW_VERSION
+    uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@feat/HEAT-1346-notify-sre-event-workflow-on-deploy # WORKFLOW_VERSION
     secrets: inherit
     with:
       environment: 'dev'
